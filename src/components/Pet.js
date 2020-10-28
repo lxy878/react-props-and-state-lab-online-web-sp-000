@@ -1,6 +1,14 @@
 import React from 'react'
 
 class Pet extends React.Component {
+
+  buttons = () => {
+     if (this.props.pet.isAdopted)
+       return <button className="ui disabled button">Already adopted</button>
+     else
+       return <button onClick={() => this.props.onAdoptPet(this.props.pet.id)} className="ui primary button">Adopt pet</button>
+   }
+
   render() {
     return (
       <div className="card">
