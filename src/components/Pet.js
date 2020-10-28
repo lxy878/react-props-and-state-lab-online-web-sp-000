@@ -26,4 +26,15 @@ class Pet extends React.Component {
   }
 }
 
+Pet.defaultProps = {
+  info: {
+    name: 'Nothing',
+    gender: 'male',
+    type: 'dog',
+    age: 1,
+    weight: 1.2,
+    isAdopted: false
+  }
+}
+
 export default Pet
