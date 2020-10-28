@@ -15,6 +15,32 @@ class App extends React.Component {
     }
   }
 
+  onChangeType = (selectedType)=>{
+    this.setState({
+      filters: {
+        type: selectedType
+      }
+    })
+  }
+
+  getUrl = () =>{
+    let baseUrl = '/api/pets'
+    const type = this.state.filters.type
+    return type === 'all' ? baseUrl : baseUrl+ `?type=${type}`
+  }
+
+  findPets = () => fetch(this.getUrl())
+    .then(resp=> resp.json())
+    .then(json=>this.setState({pets: json}))
+
+  adoptPet = (id) => {
+    const pets = this.state.pets
+    pets.find(pet=> pet.id === id).isAdopted = true
+    this.setState({
+      pets: pets
+    })
+  }
+
   render() {
     return (
       <div className="ui container">
