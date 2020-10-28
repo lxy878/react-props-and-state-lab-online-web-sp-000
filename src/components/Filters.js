@@ -15,7 +15,7 @@ class Filters extends React.Component {
         </div>
 
         <div className="field">
-          <button className="ui secondary button">Find pets</button>
+          <button className="ui secondary button" onClick={e => this.props.onFindPetsClick(e)}>Find pets</button>
         </div>
       </div>
     )
